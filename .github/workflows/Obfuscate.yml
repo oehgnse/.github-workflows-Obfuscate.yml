@@ -28,13 +28,13 @@ jobs:
         run: |
           npm install -g esbuild javascript-obfuscator
 
-      - name: ⬇️ 下载原始 worker.js 文件
+      - name: ⬇️ 克隆 BPB 源项目
         run: |
-          wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/refs/heads/main/src/worker.js
+          git clone https://github.com/bia-pain-bache/BPB-Worker-Panel.git source
 
       - name: 📦 打包为单文件
         run: |
-          esbuild origin.js --bundle --platform=browser --outfile=bundled.js
+          esbuild source/src/worker.js --bundle --platform=browser --outfile=bundled.js
 
       - name: 🤖 混淆生成 _worker.js
         run: |
