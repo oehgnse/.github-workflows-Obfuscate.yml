@@ -24,6 +24,19 @@ jobs:
         with:
           node-version: "18"
 
+      - name: 安装依赖
+        run: |
+          npm install
+
+      - name: 安装 Wrangler CLI
+        run: |
+          npm install -g wrangler
+
+      - name: 使用 Wrangler 构建
+        run: |
+          wrangler build
+
+
       - name: 📥 安装依赖（esbuild + obfuscator）
         run: |
           npm install -g esbuild javascript-obfuscator
